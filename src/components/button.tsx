@@ -1,7 +1,7 @@
 import React from 'react'
 
 type ButtonProps = {
-  variant?: 'outline' | 'text',
+  variant?: 'default' | 'outline' | 'text',
   disableShadow?: boolean,
   disabled?: boolean,
   startIcon?: React.ReactNode,
@@ -10,16 +10,17 @@ type ButtonProps = {
   color?: 'default' | 'primary' | 'secondary' | 'danger',
 }
 
-function Button({ variant, disableShadow, disabled, startIcon, endIcon, size = "md", color = "default" }: ButtonProps) {
+function Button({ variant = "default", disableShadow, disabled, startIcon, endIcon, size = "md", color = "default" }: ButtonProps) {
   return (
-    <button
-      className={`btn btn-${variant} btn-${size} btn-${color}`}
-      disabled={disabled}
-    >
-      {startIcon}
-      Button
-      {endIcon}
-    </button>
+    <>
+      <button
+        className={`bg-${color} hover:bg-${color}/[.07]`}
+      >
+        {startIcon}
+        Button
+        {endIcon}
+      </button>
+    </>
   )
 }
 
