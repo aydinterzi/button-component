@@ -11,10 +11,16 @@ type ButtonProps = {
 }
 
 function Button({ variant = "default", disableShadow, disabled, startIcon, endIcon, size = "md", color = "default" }: ButtonProps) {
+
+  const btnDisabled = disabled ? 'btn-disabled' : ''
+  const btnDisabledShadow = disableShadow ? '' : 'shadow-md'
+  const btnSize = size === "sm" ? 'p-1' : size === "md" ? 'p-2' : 'p-3'
+  const btnColor = `bg-${color} hover:bg-${color}/70`
+  const btnVariant = variant === "default" ? '' : variant === "outline" ? `border border-${color} bg-white text-${color}` : `text-${color}`
   return (
     <>
       <button
-        className={`bg-${color} hover:bg-${color}/[.07]`}
+        className={`flex items-center gap-2  ${btnSize} rounded-lg ${btnColor} ${btnVariant} ${btnDisabledShadow} ${btnDisabled}`}
       >
         {startIcon}
         Button
